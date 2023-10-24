@@ -6,6 +6,7 @@ import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
 import PrivateRoute from "../components/layouts/PrivateRoute";
 import Archive from "../pages/Archive";
+import Login from "../pages/Login";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,14 @@ const routes = createBrowserRouter([
         element: <Profile />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/signup',
+    element: <Signup />,
   },
 ]);
 
