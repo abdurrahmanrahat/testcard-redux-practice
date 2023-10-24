@@ -7,6 +7,7 @@ import Profile from "../pages/Profile";
 import PrivateRoute from "../components/layouts/PrivateRoute";
 import Archive from "../pages/Archive";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -39,12 +40,12 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
   },
   {
-    path: '/signup',
-    element: <Signup />,
+    path: "/signup",
+    element: <Register />,
   },
 ]);
 
