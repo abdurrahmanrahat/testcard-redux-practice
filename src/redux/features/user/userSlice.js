@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import auth from "../../../firebase/firebase.config";
 
 const initialState = {
@@ -13,10 +13,17 @@ const initialState = {
 // sign up user
 export const createUser = createAsyncThunk(
     "userSlice/createUser", // firstly give name then async function
-    async ({ email, password }) => {
+    async ({ email, password, name }) => {
         const data = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(auth.currentUser, {
+            displayName: name
+        })
         console.log(data);
-        return;
+
+        return {
+            email: data.user.email,
+            name: data.user.displayName
+        };
     })
 
 const userSlice = createSlice({
@@ -41,7 +48,7 @@ const userSlice = createSlice({
             })
             .addCase(createUser.rejected, (state, action) => {
                 state.isLoading = false;
-                state.isError = false;
+                state.isError = true;
                 state.name = "";
                 state.email = "";
                 state.error = action.error.message;
