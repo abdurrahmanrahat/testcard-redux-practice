@@ -1,28 +1,38 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
-import Tasks from '../pages/Tasks';
-import Chat from '../pages/Chat';
-import Settings from '../pages/Settings';
-import Profile from '../pages/Profile';
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import Tasks from "../pages/Tasks";
+import Chat from "../pages/Chat";
+import Settings from "../pages/Settings";
+import Profile from "../pages/Profile";
+import PrivateRoute from "../components/layouts/PrivateRoute";
+import Archive from "../pages/Archive";
 const routes = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
+    path: "/",
+    element: (
+      <PrivateRoute>
+        <App />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
         element: <Tasks />,
       },
       {
-        path: '/chat',
+        path: "/archive",
+        element: <Archive />,
+      },
+      {
+        path: "/chat",
         element: <Chat />,
       },
       {
-        path: '/settings',
+        path: "/settings",
         element: <Settings />,
       },
       {
-        path: '/profile',
+        path: "/profile",
         element: <Profile />,
       },
     ],
