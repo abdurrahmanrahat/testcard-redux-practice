@@ -9,6 +9,8 @@ const store = configureStore({
         tasksSlice: tasksSlice,
         userSlice: userSlice,
     },
+
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
 })
 
 export default store;

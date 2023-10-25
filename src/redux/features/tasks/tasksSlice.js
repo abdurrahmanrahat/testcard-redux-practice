@@ -11,6 +11,24 @@ const initialState = {
         date: '2023-08-28',
         assignedTo: 'Mir Hussain',
         priority: 'high',
+    }, {
+        id: 2,
+        status: 'running',
+        title: 'Redux State',
+        description:
+            'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
+        date: '2023-04-18',
+        assignedTo: 'Abdur Rahman Rahat',
+        priority: 'low',
+    }, {
+        id: 3,
+        status: 'pending',
+        title: 'Toolkit Heav',
+        description:
+            'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
+        date: '2022-02-18',
+        assignedTo: 'Abdur Rahman Rahat',
+        priority: 'medium',
     }],
     userSpecificTasks: [],
 }
