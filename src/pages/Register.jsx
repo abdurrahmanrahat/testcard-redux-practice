@@ -30,7 +30,6 @@ const Register = () => {
 
   const onSubmit = ({ name, email, password }) => {
     // Email Password signup
-    console.log(name, email, password);
     dispatch(createUser({ email, password, name }));
   };
 

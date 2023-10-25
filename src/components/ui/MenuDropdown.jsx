@@ -10,7 +10,7 @@ export default function MenuDropdown({ children }) {
   // handle Logout
   const logout = () => {
     signOut(auth);
-    dispatch(logoutUser())
+    dispatch(logoutUser());
   };
 
   return (
