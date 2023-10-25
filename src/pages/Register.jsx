@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import loginImage from "../assets/image/login.svg";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../redux/features/user/userSlice";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { handleSubmit, register, control } = useForm();
@@ -12,6 +13,9 @@ const Register = () => {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
 
+  const { isLoading, isError, error, email } = useSelector(
+    (state) => state.userSlice
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +31,19 @@ const Register = () => {
       setDisabled(true);
     }
   }, [password, confirmPassword]);
+
+  // for showing error message
+  useEffect(() => {
+    toast.error(error);
+  }, [isError, error]);
+
+  // for navigate
+  useEffect(() => {
+    if (!isLoading && email) {
+      toast.success("User register successfully");
+      navigate("/");
+    }
+  }, [isLoading, email, navigate]);
 
   const onSubmit = ({ name, email, password }) => {
     // Email Password signup
